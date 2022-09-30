@@ -73,6 +73,16 @@
    }
 ```
 
+## Traversals
+
+Talk about pre-order, post-order traversals etc.
+
+Show that DFS is simply a pre-order traversal where the "visitation" for a node is checking whether its the item that's being searched for.
+
+Show that recursive DFS is using a Stack behind the scenes 
+
+Replacing a Stack with a Queue turns the DFS into a BFS
+
 ## BFS
 
 ```java
