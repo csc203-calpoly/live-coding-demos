@@ -6,6 +6,8 @@ Remind about primitive vs. reference types
 
 Quick overview of autoboxing and unboxing
 
+Use the `ListTester.class`.
+
 **Why does this exist?** Nice to hold convenience methods, constants, etc. somewhere.
 
 ArrayLists, HashMaps, briefly mention generic types (but don't go into too much detail)

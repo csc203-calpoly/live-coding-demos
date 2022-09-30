@@ -1,7 +1,5 @@
 # CSC 203 Project-based Object-oriented Programming and Design
 
-[Lecture notes](lecture-notes/)
-
 ## Typical schedule
 
 1. Course introduction, intro to Java
