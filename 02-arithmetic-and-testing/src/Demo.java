@@ -1,9 +1,6 @@
-import java.util.ArrayList;
-
 public class Demo {
   public static void main(String[] args) {
 
-    ArrayList<String> myList;
     // ARRAYS
     // homogeneous
     // fixed sizes
@@ -27,13 +24,6 @@ public class Demo {
 //    b[3] = 4;
 
     int[] x = new int[10];
-
-    // Default values
-    int ab; // 0
-    double bb; // 0.0
-    boolean f; // false
-    char ch; // 0
-    String s; // null (for all Object types, or non-primitive types)
 
     // ------------------------------------------------------------------------
     // LOOPS

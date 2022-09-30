@@ -1,10 +1,4 @@
 import java.util.*;
-/**
- * A game of Nim.
- *
- * @author Workman/Hatalsky
- * @version 1.0
- */
 public class Game
 {
    public static void main(String[] args)
