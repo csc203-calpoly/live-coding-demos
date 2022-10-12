@@ -3,7 +3,6 @@ import java.awt.*;
 public class Circle extends ClosedFigure
 {
    private int radius;
-   private int thing = 43;
 
    public Circle()
    {

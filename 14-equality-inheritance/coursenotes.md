@@ -24,5 +24,8 @@ This is where **inheritance** comes in.
 - calling the super constructor
 - `toString` — if we didn't override it, it would call the `ClosedFigure` one
 - same for `equals`
+- same for variables
 - re-use the `super`class `equals` method
     - What does it mean to invoke a method with the `super` keyword?
+
+What happens if the two classes have instance variables that are called the same thing?

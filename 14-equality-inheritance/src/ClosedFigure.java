@@ -3,12 +3,9 @@ import java.awt.*;
 public class ClosedFigure
 {
    private Point location;
-   public int thing;
-
    public ClosedFigure(Point location)
    {
       this.location = location;
-      this.thing =  25;
    }
 
    public Point location() 
@@ -24,7 +21,7 @@ public class ClosedFigure
    @Override
    public String toString()
    {
-      return "x: " + location.x + "   y: " + location.y + "CF Thing"  + thing;
+      return "x: " + location.x + "   y: " + location.y;
    }
 
    @Override
