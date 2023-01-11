@@ -6,6 +6,7 @@ public class JavaSample
    // When the class is run, the method below will run
    public static void main(String[] args) // 
    {
+      // ====================== BASIC DATA TYPES ===========================
       // Every variable must have a type that is set at compile time.
       int x = 5; // declaring and initialising
       int z; // can declare a variable without giving it a value
@@ -18,13 +19,14 @@ public class JavaSample
 
       int[] scores = {83, 42, 77, 92, 73, 95, 81, 42}; // Size is fixed!
 
+      // ==================== REFERENCE TYPES VS. PRIMITIVE TYPES =============
       Point p = new Point(1, 2);
       Point q = new Point(1, 2);
 
       System.out.println("p == q --> " + (p == q)); // false
       System.out.println("p.equals(q) --> " + p.equals(q)); // true
 
-      // Equality comparisons for Strings
+      // ================ STRING EQUALITY =================================
       System.out.println("model == \"Bronson\"" + (model == "Bronson")); // true
       // The line above will print "true" because the String literal "Bronson" has been
       // "interned" (or cached) by the compiler. So the model variable is pointing to the same
@@ -34,6 +36,7 @@ public class JavaSample
          x = 3;
       } // Are the braces needed?
 
+      // ==================== LOOPS ==================================
       // i can only be used (only has scope) inside the for loop
       for (int i = 0; i < scores.length; i++) // Could also use scores.length
          System.out.println("Score " + i + ": " + scores[i]);
@@ -42,7 +45,7 @@ public class JavaSample
       for (int val : scores) // scores is "iterable"
          System.out.println(val);
 
-      i = 0;  // The type of i must be declared.
+      int i = 0;  // The type of i must be declared.
       while (i < 8) {
          System.out.println(scores[i]);
          i++;  // Doesn't exist in Python
