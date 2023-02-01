@@ -6,7 +6,7 @@ So far we've talked about `Interfaces`, which cannot have any behaviour implemen
 
 These are just **blueprints** for other classes—parents that only specify *what* those child classes can do, but not *how* they are done. Remember the `List` example.
 
-But sometimes we want **parent** classes that can have their own data and behaviour, with child classes that specialised versions of them.me
+But sometimes we want **parent** classes that can have their own data and behaviour, with child classes that are specialised versions of them.
 
 This is where **inheritance** comes in.
 
