@@ -5,12 +5,12 @@ import java.lang.Math;
 
 public class Person
 {
-  private String name;
-  private int age;
+  private final String name;
+  private final int age;
 
   /**
    * Creates a new Person.
-   * 
+   *
    * @param name The Person's name
    * @param age The Person's age
    * @throws IllegalArgumentException if age < 0 or name is empty
@@ -25,7 +25,7 @@ public class Person
       throw new IllegalArgumentException("name must be non-empty.");
     }
 
-    this.name = lastName;
+    this.name = name;
     this.age = age;
   }
 
@@ -49,24 +49,21 @@ public class Person
       this.name.equals(otherPerson.name);
   }
 
-  /*
   @Override
   public int hashCode() {
-    int rand = (int) (Math.random() * 10);
-    return rand + Objects.hash(lastName, age);
+    return Objects.hash(age);
   }
-  */
 
- @Override
- public int hashCode()
- {
-   int result = 1;
-
-   result = result * 37 + ((this.name == null) ? 0 : this.firstName.hashCode());
-   result = result * 37 + age;
-
-   return result;
- }
+// @Override
+// public int hashCode()
+// {
+//   int result = 1;
+//
+//   result = result * 37 + ((this.name == null) ? 0 : this.name.hashCode());
+//   result = result * 37 + age;
+//
+//   return result;
+// }
 
   /*
    * Contract:
