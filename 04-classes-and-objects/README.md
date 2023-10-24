@@ -1,7 +1,5 @@
 # 04 — Classes and objects
 
-[**Menti questions**](https://www.mentimeter.com/s/fe8797d852a39c3e16793584e8bc3e06/b8333ce81cb3/edit)
-
 # Objectives
 
 - Review CS Cohorts example and lists and maps
