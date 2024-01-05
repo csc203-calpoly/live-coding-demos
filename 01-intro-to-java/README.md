@@ -1,5 +1,16 @@
 # Introduction
 
+This lecture covers:
+
+- Static vs. dynamic typing
+- Variables
+- Primitive vs. reference types
+- Arrays
+- Default values
+- Control flow
+  - Conditionals
+  - Looping
+
 ## Data types in Java
 
 Since many of you are likely coming from a Python background, some of this discussion will refer back to commonalities and differences between Java and Python. If you have no Python experiences, that is fine. We do not assume Python knowledge.
@@ -9,52 +20,70 @@ Due to some language features in Java, I will sometimes ask you to ignore certai
 I only do this because I will explain what those mean later when we get to those topics.
 By the end of the quarter, there won't be keywords we see in class that I'll ask you to ignore.
 
-### Java is statically-typed 
+### Static typing 
 
 **Java is a *statically typed* language.** What does this mean? It means that before you can *run* Java code, a *compiler* checks that variables are used in ways that are consistent with their declared types.
-For example, you can't divide the text `"foobar"` by the integer `10` (i.e., `"foobar" / 10`).
+
+For example, consider the following expression:
+
+```java
+"foobar" / 10
+```
+
+It attempts to divide the text `"foobar''` by the number `10`, which is a meaningless operation.
+The above expression would result in errors in *statically-typed* languages (like Java) as well as in *dynamically-typed* languages (like Python).
+But exactly *when* those errors occur is different between the two languages.
+
+In a *dynamically-typed* language like Python, the program would begin to run, encounter the expression above, and then crash with an error message. The program would execute right up until it encounters the erroneous line, and then crash. That is, the error appears *at run time*.
+
+In a *statically-typed* language like Java, before the program runs, the *compiler* checks the program for erroneous uses of values like we see above. If the compiler finds any errors, you must fix them before you're able to run the program.
+
 If the code has type errors like this, the code will not execute at all.
 
-You also can't do this division example in a language like Python or JavaScript, which are traditionally *dynamically typed*. However, your program containing the expression `"foobar" / 10` *will execute* right up until it reaches that expression, at which point it will crash.
-
-A statically typed language like Java helps us catch these errors at compile time instead of at runtime.
-There are many flame wars about whether statically-typed languages are better than dynamically-typed languages, and also what "better" means in this context.
+A statically-typed language like Java helps us catch these errors at *compile time* instead of at *run time*.
+There is ongoing debate about whether statically-typed languages are better than dynamically-typed languages, and also what "better" means in this context.
 
 Proponents of statically-typed languages argue that programming is less error-prone with static typing, particularly in large codebases or in codebases where the developer is unfamiliar with the code (i.e., they didn't write it themselves).
 
-Proponents of dynamically-typed languages argue that programming becomes less verbose and more flexible.
+Proponents of dynamically-typed languages argue that programming becomes less verbose and more flexible, and that a good test suite can catch most of the type-related errors that a compiler would flag.[^compiler-test-suite]
+
+[^compiler-test-suite]: You can think of the compiler as a type of limited test suite. Instead of checking functional correctness, it checks for syntax and, in statically-typed languages, type-related correctness.
 
 ### Declaring and initialising variables 
 
-You already know what it means to *declare* and *initialize* variables using whatever language you're coming from. When you *declare* a variable, you are simply saying that there is now a variable with the given name. 
-When you *initialize* a variable, you are giving that variable an initial value.
+You may already know what it means to *declare* and *initialize* variables using whatever language you're coming from, but we will revisit this vocabulary briefly.
 
-When you *declare* a variable in Java, you must also say what its data type is. That is, what kind of data will it hold.
+When you *declare* a variable, you are creating it, i.e., you are saying that there is now a variable with the given name. 
+When you *initialize* a variable, you are giving that variable an initial value.
+When you *assign* a value to a variable, you are giving it a value, potentially replacing its previous value.
+
+When you *declare* a variable in Java, you must also say what its *data type* is.
 For example:
 
 ```java
 int z;
 ```
 
-The variable `z` above can now *only* hold integer values. Its type also dictates that we can only perform "integer-friendly" operations using it, like math operations or printing. We can't do things like turn it to "upper case", because that doesn't make sense for an integer.
+The variable `z` above can now *only* hold integer values. Its type also dictates that we can only perform "integer-friendly" operations using its value, like math operations or printing.
+We can't do things like turn it to "upper case", because that doesn't make sense for an integer.
 
 ```java
 z = "this isn't a number!"; // this code will not compile
 z = 10; // this will be fine
 ```
 
-You can also declare and initialize a variable in the same line.
+You can also declare and initialize a variable in the same line (and will usually do this).
 
 ```java
 int z = 10; 
 int y = -12;
 
-z = 12; // you can update z's value, but only to other integers 
+z = 12; // you can update z's value
 ```
 
 ### Primitive types and reference types
 
-There are eight basic or "primitive" data types in Java:
+There are eight basic or *primitive* data types in Java:
 
 | Data type | Description | Allowed values |
 | -- | -- | -- |
@@ -67,20 +96,22 @@ There are eight basic or "primitive" data types in Java:
 | `boolean` | Track true/false conditions. | `true` or `false` |
 | `char` | A single 2-byte character. | '\u0000' (or 0) to `\uffff` (or 65535) |
 
-There are also types known as "reference" types, for example the `String` type.
-Reference types are abstractions created for programming convenience. They are built using primitive types or other reference types as building blocks.
+There are also *reference* types, for example the `String` type.
+Reference types are abstractions created for programming convenience.
+They are built using primitive types or other reference types as building blocks.
 
 The most commonly used reference type in Java is the `String` type. It stores _text_. The `String` type "strings together" a bunch of `char`s to make a longer piece of text.
 
 You can declare and initialise a `String` variable like below. Notice the double-quotes! Single-quotes are reserved for the `char` type. You must use double-quotes for `String`s.
 
 ```java
-String thisCourse = "CSC 203"; 
+String course = "CSC 203"; 
 ```
 
 ### Reference types and equality
 
-The value of a variable that is declared as a reference type is actually, well, a _reference_ to the data stored somewhere in memory.
+The value of a variable that is declared as a reference type is a _reference_ to the data stored somewhere in memory.
+Hence the name.
 You can have multiple references to the same data.
 
 There are implications to this.
@@ -96,9 +127,8 @@ int b = 12;
 System.out.println(a == b); // This will print false.
 System.out.println(a == 10); // This will print true.
 
-
 char theLetterA = 'a';
-chat theLetterAAgain = 'b'; 
+chat theLetterAAgain = 'a'; 
 
 System.out.println(theLetterA == theLetterAAgain); // This will print true.
 ```
@@ -107,12 +137,14 @@ _However, for reference types, this operator's behaviour differs between Java an
 
 For reference types, the `==` operator checks whether the two operands are the _same_ (as in, physically the same item in memory), and not whether they are *equal* according to some logical rule for equality.
 
-**Example**. Suppose we have two `Point` objects, representing two points in 2-dimensional space.
+**Example**. Suppose we have two `Point` objects, representing points in 2-dimensional space.
 
-(We will get to those—but those details are less relevant for this example.)
+(We will talk more about `Point`s later—those details are less relevant for this example.)
+
+In the example below, we use the `new` keyword to create two new `Point` objects.
 
 ```java
-Point p1 = new Point(1, 2); // A point at coordinates (1, 2). The "new" keyword is used to create new objects in Java.
+Point p1 = new Point(1, 2); // A point at coordinates (1, 2).
 Point p2 = new Point(1, 2); // Another point at coordinates (1, 2).
 ```
 
@@ -120,9 +152,11 @@ Point p2 = new Point(1, 2); // Another point at coordinates (1, 2).
 
 The answer is `false`, because the `==` operator checks *sameness*, not *equality*.
 
-Because `p1` and `p2` are *reference types*, each of those variables is pointing to a different location in memory. Now, you and me and everyone else understands that if two points have the same `x` and `y` coordinates, they should be considered equal.
+Because `p1` and `p2` are *reference types*, each of those variables is pointing to a different location in memory. Now, you and me and everyone else understands that if two points have the same `x` and `y` coordinates, they should probably be considered equal.
 
-Therefore, for all reference types in Java, equality should be checked using the `.equals` function, which checks for *equality* instead of *sameness*. 
+That is why all reference types provide an `equals` function, which checks *equality* (using some logical definition of equality) rather than *sameness*.
+
+We can use it as follows:
 
 ```java
 Point p1 = new Point(1, 2);
@@ -130,29 +164,34 @@ Point p2 = new Point(1, 2);
 
 Point p1Again = p1; // p1Again and p1 are both pointing to the same Point.
 
-// This will print false.
+// This will print false, because p1 and p2 are not the same object.
 System.out.println(p1 == p2);
 
-// This will print true, because they're the same object.
+// This will print true, because p1 and p1Again are the same object.
 System.out.println(p1 == p1Again);
 
-// This will print true, as we would expect.
+// This will print true, because p1 and p2 are logically equal objects.
 System.out.println(p1.equals(p2));
 ```
 
 #### String equality
 
-Strings are special type of reference type. They are so commonly used that Java provides a specialized syntax for creating a new String without having to use the `new` keyword.
+Strings are special type of reference type.
+They are so commonly used that Java provides a specialized syntax for creating a new String without using the `new` keyword.
 
 ```java
 String make = "Santa Cruz";
 String model = "Bronson";
 ```
 
-Since they are reference types, you should compare Strings for equality using the `.equals` function, and _not_ the `==` operator.
+Since they are reference types, you should compare Strings for equality using the `equals` function, and _not_ the `==` operator.
 
-However, the Java compiler is smart enough to SOMETIMES recognise when the same text is being used as the value for multiple `String` variables.
-It will therefore _intern_ or cache the String value. Each additional variable with the same value will point to the same `String` in memory.
+However, the Java compiler is smart enough to SOMETIMES recognise when multiple `String` variables hold the same `String` value.
+It will therefore _intern_ or cache the String value.
+Each additional `String` variable with the same value will point to the same `String` in memory.
+
+This means that, sometimes, the `equals` function and the `==` operator will have similar behaviour for `String`s, even though `String` is a reference type.
+
 
 ```java
 String csc203 = "CSC 203";
@@ -162,37 +201,42 @@ System.out.println(csc203.equals(csc203Again)); // This will print true, as expe
 System.out.println(csc203 == csc203Again); // This will also print true.
 ```  
 
-This means that, sometimes, the `.equals` function and the `==` operator will have similar behaviour. However, this is a compiler optimisation, and should not be relied upon in all cases. You can't predict when `==` and `.equals` will behave the same for Strings, so you should still use `.equals` to compare Strings for equality.
+However, this is a compiler optimisation, and you should not rely upon it.
+You can't predict when `==` and `equals` will behave the same for `String`s, so you should still use `equals` to compare `String`s for equality.
 
 ### Arrays
 
-To store a collection of items in Java, the simplest collection you use is an *array*. Two things are important to know about arrays:
+To store a collection of items in Java, the simplest collection you can use is an *array*.
+Two things are important to know about arrays:
 
 * Their types are fixed. You can't mix types in an array.
 * Their sizes are fixed. An array can't grow or shrink after its initial creation.
 
-Here is how to declare and initialize an array with some data:
+Here is how to declare and initialize an integer array with some data:
 
 ```java
 int[] scores = {83, 43, 77, 92, 73, 95, 81, 42};
 ```
 
-You can use box brackets to index into an array to look at its contents. Arrays are _0-indexed_, which means that the first item in the array is at position 0, the second is at position 1, etc.
+Arrays are _0-indexed_, which means that the first item in the array is at position 0, the second is at position 1, etc.
 
-You can also use the same syntax to _modify_ the contents of an array.
+You can use box brackets (`[` and `]`) to *index into* an array, i.e., access a particular position in an array.
+You can use this syntax to *read* data from an array, or *write* data to the array.
 
 ```java
 int[] scores = {83, 43, 77, 92, 73, 95, 81, 42};
 
+// Reading data
 System.out.println(scores[0]); // This will print the value 83
 System.out.println(scores[7]); // This will print the value 42
 
+// Writing data
 System.out.println(scores[1]); // This will print the value 43.
 scores[1] = 37;
 System.out.println(scores[1]); // This will now print 37.
 ```
 
-However, if you try to look at a position that's beyond the bounds of the array's size, your program will crash.
+If you try to look at a position that's beyond the bounds of the array's size, your program will crash (i.e., there will be an error at run time).
 
 ```java
 int[] scores = {83, 42, 77, 92, 73, 95, 81, 42};
@@ -219,10 +263,12 @@ You can also declare an array and *fix its size*, but not specify its contents.
 int[] scores = new int[4]; // A new array of size 4
 ```
 
-The above line created an array `scores` of size 4. But we didn't specific the contents of this array.
+The above line created an array `scores` of size 4. But we didn't specify the contents of this array.
 However, the array is not "empty"—there is no such thing as an empty array in Java.
+
 When you create an array, you're allocating that amount of contiguous space for its contents.
 So, whether or not you declare the contents of the array, that space is allocated.
+
 What's sitting in that space?
 
 ### Default values
@@ -233,7 +279,7 @@ Here are the default values for all the primitive types:
 
 | Data type | Default value |
 | -- | -- |
-| `byte` | 0 |
+| `byte` | `0` |
 | `short` | `0` |
 | `int` | `0` |
 | `long` | `0L` |
@@ -242,7 +288,8 @@ Here are the default values for all the primitive types:
 | `boolean` | `false` |
 | `char` | `\u000` (or 0) |
 
-All reference types like `String` or `Point` or >others we learn about have the same default value. It is a special value in Java called `null`.
+All reference types like `String` or `Point` or others we learn about have the same default value.
+It is a special value in Java called `null`.
 When a variable's "value" is `null`, it means that the variable is "pointing to nothing".
 
 ## Control flow
@@ -252,6 +299,8 @@ When a variable's "value" is `null`, it means that the variable is "pointing to 
 Java uses `if`, `else if`, and `else` for conditional logic.
 
 Unlike Python, Java does not use indentation to denote _scope_. We use curly braces to denote what happens inside each clause of the "if-else ladder" below.
+
+However, you should still use appropriate indentation to improve readability.
 
 ```java
 Point p1 = new Point(1, 2);
@@ -271,7 +320,10 @@ if (p1 == p2) {
 
 ### Repetition ("looping")
 
-There are 3 looping constructs in Java.
+There are 4 looping constructs in Java.
+
+In most cases, any looping construct can be used to perform any task involving repetition.
+But the different types of loops are provided as "syntactic sugar"—each loop type is "nicer" (more intuitive, less error-prone, etc.) to use for some tasks than others.
 
 #### The `for` loop
 
@@ -279,9 +331,9 @@ Use this when you want to do something repeatedly a certain number of times.
 
 The `for` loop has 3 main pieces:
 
-* The counter variable: `int i = 0`  in the example below.
+* The counter variable: `int i = 0`  in the example below. This statement runs once *before* the entire loop.
 * The looping condition: `i < 10` in the example below. The loop will keep repeating as long as this condition is `true`.
-* The counting step: `i++` in the example below. This is shorthand same as `i = i + 1`. This statement runs _after_ each iteration of the loop. 
+* The counting step: `i++` in the example below. This is shorthand for `i = i + 1`. This statement runs _after_ each iteration of the loop.
 
 ```java
 for (int i = 0; i < 5; i++) {
@@ -309,6 +361,7 @@ for (int i = 0; i < scores.length; i++) {
 }
 ```
 
+Because `i` runs through the values `0` through `7`, we can use `i` to access elements from the `scores` array.
 The code above would print
 
 ```
@@ -322,12 +375,14 @@ The code above would print
 42
 ```
 
-However, there is a lot of "surface area" for potential errors in these kinds of loops. You could mess up for starting value of `i` or the looping condition (should it be `i < scores.length`, `i <= scores.length`).
+There is a lot of "surface area" for potential errors in these kinds of loops.
+For example, you could mess up the starting value of `i` (should it be `0` or `1`?) or the looping condition (should it be `i < scores.length`, `i <= scores.length`?).
 
-So for iteration, we use the `for-each` loop.
+So for iteration, we use another looping construct: the `for-each` loop.
 
 #### The `for-each` loop
 
+The `for-each` loop takes care of the details of stepping through a collection for us.
 
 ```java
 int[] scores = {83, 43, 77, 92, 73, 95, 81, 42};
@@ -338,6 +393,8 @@ for (int item : scores) {
 ```
 
 In the loop above, the `item` variable steps through the `scores`  array and updates in each step, stopping when you run out of items.
+
+You can read the loop above as "for each item in scores".
 
 It'll print:
 
@@ -354,17 +411,35 @@ It'll print:
 
 #### The `while` loop
 
-The "simplest" kind of loop. It simply keeps on running as long as the given condition is true.
+The "simplest" kind of loop. It simply keeps on running as long as the given condition is `true`.
 
-You typically use this loop when you don't know how many times it's going to run beforehand. E.g., you're reading lines from a file, and you want to keep reading it line-by-line as long as there are more lines to be read.
+You typically use this loop when you don't know how many times the loop is going to run beforehand.
+For example, if you are reading lines from a file, and you want to keep reading it line-by-line as long as there are more lines to be read.
 
 ```java
-while (lineStillHasFiles) {
+while (fileStillHasLines) {
     // Get the next line. Assume this function exists for this example.
     String line = nextLine(); 
     System.out.println(line);
 }
 ```
 
-It's important to know that the looping condition will _eventually_ be `false`, otherwise your code will go into an infinite loop.
+It's important to know that the looping condition will _eventually_ be `false`, otherwise your code will go into an infinite loop and the program will never progress or end.
+
+This is useful when you want to perform an action 0-to-many times, depending on some condition.
+
+#### The `do-while` loop
+
+This loop functions just like the `while` loop, except for one difference.
+The `while` loop checks the looping condition *before* each iteration.
+The `do-while` loop checks the looping condition *after* each iteration.
+
+```java
+do {
+    String line = nextLine(); // Suppose, for example, our file is guaranteed to have at least one line.
+    System.out.println(line);
+} while (fileStillHasLines);
+```
+
+This can be a useful loop to use in cases where you want to perform an action *at least once*, and then repeat based on some condition.
 
