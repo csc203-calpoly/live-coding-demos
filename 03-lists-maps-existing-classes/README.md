@@ -109,20 +109,49 @@ public class CsCohort {
 
 Here are some key items to note:
 
-- Notice that, unlike the examples in our previous lecture, the code does not include a `public static void main` function. That is because this file is not meant to be "run"—it is not an entry point to an application. Instead, it is a *definition*, which we can (and will) use in a `public static void main` function in another file.
-- The three variables `year`, `enrolled`, and `retainedPercent` are called *instance variables*. Just like *instance methods*, these are so called because, while each `CsCohort` object is guaranteed to have these variables, each `CsCohort` object will have its own values for these variables. 
+- **No `public static void main`** — The `main` function is used as the starting point or entry point to a Java program. In the code above, we are not writing code that is meant to be "run". Instead, it is a *definition* that can be used in a `main` function in another file.
+- **Instance variables** — The three variables `year`, `enrolled`, and `retainedPercent` are called *instance variables*. Just like *instance methods*, these are so called because, while each `CsCohort` object is guaranteed to have these variables, each `CsCohort` object will have its own values for these variables. 
+  - `private` indicates that those variables are not visible in any other files. If a variable is `public`, it can be read and modified by other classes. We will see implications of this soon.
+  - `final` indicates that that variable's value cannot be updated once the variable has been initialized.
+- **Constructor** — The *constructor* is the part that starts with `public CsCohort(....)`. A constructor looks like a method without a name. Its job is to *construct* the object, using the inputted data as appropriate.
+  - In this case, the constructor will be given, as parameters, a `year`, an `inEnroll`, and an `inPercent`. These parameters' values are then given to the instance variables, so that they can be used throughout the class.[^constructor-param-scope]
+  - The `public` indicates that this constructor is visible in other classes, i.e., other classes can use this constructor to create `CsCohort` instances.
+- **The `this` keyword** — Notice that one of the constructor parameters, `year`, has the same name as the `year` instance variable. So how do we know which one we are referring to when we're reading its value or assigning it a new value? That's where the `this` keyword comes in.
+  - `this` is used when the object needs to refer to *itself*. That is, it needs to refer to *members* (instance variables or instance methods) that belong to the object. So when we say `this.year`, that tells the compiler that we mean to refer to the *instance variable* `year`, and not the *constructor parameter* `year`.
+    - If we just said `year` in the constructor, the compiler would resolve that to the local variable `year` (the constructor parameter).
+  - For the instance variables `enrolled` and `retainedPercent`, there is no ambiguity, i.e., no constructor parameter with the same name. So we *could* refer to them using just their names—but it is good practice to *always* use `this` when referring to instance variables or methods.
+- **Instance methods** — We have already described the purpose of instance methods. Now let's look at some examples. These instance methods define the behaviours that each `CsCohort` is capable of, using with each one its own instance data. In the code example above, see the following methods:
+  - `getYear` — Simply returns the value of `this.year`
+  - `setYear` — Sets a new value for `this.year`
+  - `getEnrolled` — Returns the value of `this.enrolled`
+  - `getRetainedPercent` — Returns the value of `this.retainedPercent`
+  - `setRetainedPercent` — Sets the value of `this.retainedPercent`, after doing some validity checks first
+  - `retained` — Computes and returns the number of students in the cohort that were retained
 
-A* *class* defines an object's data 
+[^constructor-param-scope]: The constructor parameters, like all parameters in Java, are *local* to the constructor. This means their values cannot be accessed by other parts of the class. That's why we taken in those values in the constructor, and give them to the instance variables, which are visible throughout the class.
 
-- String class (show source)
-- Show examples of String objects
-- Go through `csCohorts`
-    - Data and behaviour!
-    - Doesn't start with `main`
-    - Constructor
-    - Getters and setters (why not just make the fields public?)
+### Encapsulation, or, information hiding
 
-## Lists
+Consider the `getYear`, `setYear`, `getEnrolled`, `getRetainedPercent`, `setRetainedPercent` methods above.
+They don't do much beyond getting or setting the values of the appropriate variables.
+These are called *getter methods* (or *accessors*) and *setter methods* (or *mutators*).
+Because they are marked as `public` methods, they are visible to other classes, which means other classes can *get* or *set* the cohort's `year` and so on.
+
+This should raise the question: why did we make the `year` (and other instance variables) `private` if we were going to expose access to those variables via `public` instance methods?
+
+The answer is *encapsulation*. When we make our instance variables `private`, we hide them from the outside world. We gain the following benefits:
+
+- **We can prevent mutations for some variables**. For example, notice that `enrolled` does not have a setter method. We simply do not allow other classes to ever modify the `enrolled` value, which we could not have done if it was `public`.
+- **We can control mutations for some variables.** In the `setRetainedPercent` method, we are able to perform some validity checks before accepting a new value for the retained percent. Specifically, because this is a percentage, we check that the input value is within the range 0–1.
+- **Finally, we _decouple_ our class from other classes.** By hiding these bits of information (as opposed to giving unfettered access to the internals of how our `CsCohort` works), we reduce the potential for *coupling* between our `CsCohort` class and other classes in our program.
+
+**What's coupling?** If classes are *tightly coupled*, they have to change together. Each time one of the classes changes, it will force changes in other classes to accommodate the changes in the first class. When classes are *loosely coupled*, they are mostly independent. This does not mean they don't work together to make things happen; it just means that internals of the either of the classes can change without the other ever knowing about it.
+
+Encapsulation helps with this. By defaulting to making our instance variables `private`, we get a lot more control over the functionality that `CsCohort` presents to other classes.
+
+## Existing classes in Java
+
+### Lists
 
 ### Review of arrays
 
