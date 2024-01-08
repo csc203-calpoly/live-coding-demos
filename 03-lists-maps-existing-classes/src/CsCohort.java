@@ -1,12 +1,9 @@
-/*examples to work on day 2 of 203 - actual data on size of CSC frosh class with one year retention data */
-
-public class CsCohort
-{
+public class CsCohort {
    // notice that we don't start with "public static void main"
 
    // instance variables
    private int year;
-   private int enrolled;
+   private final int enrolled; // "final" means the variable's value cannot be changed after its initialization
    private double retainedPercent;
 
    // constructor
@@ -23,16 +20,25 @@ public class CsCohort
    public void setYear(int year) {
       this.year = year;
    }
-   public int getEnrolled() { return this.enrolled; }
-   public double getPercent() { return retainedPercent; }
+   public int getEnrolled() {
+      return this.enrolled;
+   }
+
+   public double getPercent() {
+      return this.retainedPercent;
+   }
+
    public void setRetainedPercent(double newPercent) {
       if (newPercent >= 0 && newPercent <= 1) {
          this.retainedPercent = newPercent;
       } else {
-         // break
+         // newPercent is not a valid value; print an error message
          System.out.println("Expected a value between 0 and 1");
       }
    }
-   public int retained() { return (int)(retainedPercent*enrolled); }
+
+   public int retained() {
+      return (int) (retainedPercent * enrolled);
+   }
 }
 
