@@ -61,74 +61,9 @@ Hence the name.
 
 Consider the following class definition. It defines a class that holds data representing a cohort of CS students, and some behaviours that each cohort object can perform using its own data.
 
-Take some time to study the code below.
+Take some time to study the code below and its accompanying annotations.[^casdoc]
 
-```java
-public class CsCohort {
-   // Instance variables 
-   private int year;
-   private final int enrolled; // final = value cannot change after it is set
-   private double retainedPercent;
-
-   // constructor
-   public CsCohort(int year, int inEnroll, double inPercent) {
-      this.year = year;
-      this.enrolled = inEnroll;
-      this.retainedPercent = inPercent;
-   }
-
-   public int getYear() {
-      return this.year;
-   }
-
-   public void setYear(int year) {
-      this.year = year;
-   }
-   public int getEnrolled() {
-      return this.enrolled;
-   }
-
-   public double getPercent() {
-      return this.retainedPercent;
-   }
-
-   public void setRetainedPercent(double newPercent) {
-      if (newPercent >= 0 && newPercent <= 1) {
-         this.retainedPercent = newPercent;
-      } else {
-         // newPercent is not a valid value; print an error message
-         System.out.println("Expected a value between 0 and 1");
-      }
-   }
-
-   public int retained() {
-      return (int) (retainedPercent * enrolled);
-   }
-}
-```
-
-Here are some key items to note:
-
-- **No `public static void main`** — The `main` function is used as the starting point or entry point to a Java program. In the code above, we are not writing code that is meant to be "run". Instead, it is a *definition* that can be used in a `main` function in another file.
-- **Instance variables** — The three variables `year`, `enrolled`, and `retainedPercent` are called *instance variables*. Just like *instance methods*, these are so called because, while each `CsCohort` object is guaranteed to have these variables, each `CsCohort` object will have its own values for these variables. 
-  - `private` indicates that those variables are not visible in any other files. If a variable is `public`, it can be read and modified by other classes. We will see implications of this soon.
-  - `final` indicates that that variable's value cannot be updated once the variable has been initialized.
-- **Constructor** — The *constructor* is the part that starts with `public CsCohort(....)`. A constructor looks like a method without a name. Its job is to *construct* the object, using the inputted data as appropriate.
-  - In this case, the constructor will be given, as parameters, a `year`, an `inEnroll`, and an `inPercent`. These parameters' values are then given to the instance variables, so that they can be used throughout the class.[^constructor-param-scope]
-  - The `public` indicates that this constructor is visible in other classes, i.e., other classes can use this constructor to create `CsCohort` instances.
-- **The `this` keyword** — Notice that one of the constructor parameters, `year`, has the same name as the `year` instance variable. So how do we know which one we are referring to when we're reading its value or assigning it a new value? That's where the `this` keyword comes in.
-  - `this` is used when the object needs to refer to *itself*. That is, it needs to refer to *members* (instance variables or instance methods) that belong to the object. So when we say `this.year`, that tells the compiler that we mean to refer to the *instance variable* `year`, and not the *constructor parameter* `year`.
-    - If we just said `year` in the constructor, the compiler would resolve that to the local variable `year` (the constructor parameter).
-  - For the instance variables `enrolled` and `retainedPercent`, there is no ambiguity, i.e., no constructor parameter with the same name. So we *could* refer to them using just their names—but it is good practice to *always* use `this` when referring to instance variables or methods.
-- **Instance methods** — We have already described the purpose of instance methods. Now let's look at some examples. These instance methods define the behaviours that each `CsCohort` is capable of, using with each one its own instance data. In the code example above, see the following methods:
-  - `getYear` — Simply returns the value of `this.year`
-  - `setYear` — Sets a new value for `this.year`
-  - `getEnrolled` — Returns the value of `this.enrolled`
-  - `getRetainedPercent` — Returns the value of `this.retainedPercent`
-  - `setRetainedPercent` — Sets the value of `this.retainedPercent`, after doing some validity checks first
-  - `retained` — Computes and returns the number of students in the cohort that were retained
-
-[^constructor-param-scope]: The constructor parameters, like all parameters in Java, are *local* to the constructor. This means their values cannot be accessed by other parts of the class. That's why we taken in those values in the constructor, and give them to the instance variables, which are visible throughout the class.
+[^casdoc]: Code annotating performed using [Casdoc](https://cs.mcgill.ca/~martin/casdoc/)
 
 ### Encapsulation, or, information hiding
 
