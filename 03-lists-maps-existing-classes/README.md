@@ -84,16 +84,67 @@ The answer is *encapsulation*. When we make our instance variables `private`, we
 
 Encapsulation helps with this. By defaulting to making our instance variables `private`, we get a lot more control over the functionality that `CsCohort` presents to other classes.
 
-## Existing classes in Java
+## Using existing classes in Java
 
-### Lists
+Take a moment to study the `CompareCohorts` file below as you read the notes in this section.
 
-### Review of arrays
+<object data="CompareCohorts.html" width="100%" height="75%"></object>
 
-- Creating a new array
-- Must use the `new` keyword
+### Using the class that we just created
 
-### ArrayLists
+We can create new instances of the `CsCohort` class like so:
+
+```java
+CsCohort year1 = new CsCohort(2012, 132, .932);
+CsCohort year2 = new CsCohort(2013, 172, .924);
+CsCohort year3 = new CsCohort(2014, 157, .936);
+CsCohort year4 = new CsCohort(2015, 172, .977);
+```
+
+Each of the variables above points to a different object.
+Each object has its own data and its own behaviours that operate on that data.
+
+Remember the Java memory model.
+Each of those `CsCohort` variables (`year1`, `year2`, `year3`, `year4`) are *pointing* to the objects sitting somewhere else in memory.
+
+### Other existing classes in Java
+
+Now that we know what *classes*, *objects*, and *instance methods* are, let's look at some existing classes that are provided by the Java standard library.
+
+We have already seen one super commonly used class: the `String` class, which can reasonably be thought of as a *data structure* whose job it is to store and manipulate sequences of characters.
+
+In the rest of this lesson, we'll talk about other data structures, specifically *lists* and *maps*.
+
+**Lists**
+
+To talk about lists, we first need to talk about arrays.
+
+Recall from the first lesson that arrays are the most basic type of collection in Java.
+Its key difference from the *lists* you might be used to from Python is that arrays have *fixed sizes* and *fixed types*.
+
+The *fixed type* is due to Java's static type system and fondness for (some degree of) type safety. That won't change.
+
+However, we often do not know upfront how big we're going to need a sequence of data to be.
+Arrays can be limiting in that regard.
+
+So the Java standard library provides a couple of *list* implementations that we can use.
+
+**`ArrayLists`**
+
+The [ArrayList](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/ArrayList.html) class is provided in the Java Standard library.
+It is, essentially, a resizable array implementation.
+This means you can dynamically grow and shrink the size of the list by adding items to it or removing items from it.
+
+See the `CompareCohorts` class above for examples about how to create and use `ArrayLists`.
+
+*Why would we want to use an `ArrayList` instead of a regular old array?* Easy. Its size can be dynamically changed, which makes it much more flexible.
+
+*How does it work?* An `ArrayList` works by keeping track of an array behind the scenes. We call this the *backing array*. So suppose we declare and initialize an empty `ArrayList`.
+According to the documentation, Java by default creates a backing array of size 10, even though we haven't added anything to the list as yet.
+
+| | | | | | | | | | |
+|--|--|--|--|--|--|--|--|--|--|
+|| | | | | | | | | |
 
 - ArrayList documentation
 - Arrays vs. ArrayLists: Why use ArrayLists?
