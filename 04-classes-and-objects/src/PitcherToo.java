@@ -1,20 +1,24 @@
-/**
- * Code annotated using <a href="https://www.cs.mcgill.ca/~martin/casdoc/index.html">Casdoc</a>.
- */
 /*?
- * Keyword:public class Pitcher
+ * Type: Keyword
+ * Anchor: public class Pitcher
+ * ---
  * This class is designed purely for the purpose of storing data. Very much
  * like a "struct" in C, or a "dict" in Python.
  * 
  * It represents a baseball Pitcher.
  */
-public class PitcherToo
-{
+public class PitcherToo {
     /*?
-     * Block:4
-     * Instance variables
+     * Type: Block
+     * Range:4
+     * Title:Instance variables
+     * ---
      * As we've seen before, these are the instance variables.
      * Each Pitcher object will have its own values for these variables.
+     * 
+     * We're marking these as `public` in this procedural example, only to 
+     * illustrate that there really is nothing else happening here except
+     * packaging of these fields into a compound structure.
      */
     public double inningsPitched;
     public int runsScored;
@@ -30,12 +34,3 @@ public class PitcherToo
         this.losses = losses;
     }
 }
-
-/*
- * {
- *  inningsPitched: 0,
- *  runsScored: 0,
- *  wins: 0,
- *  losses: 0
- * }
- */
