@@ -4,7 +4,7 @@
  * ---
  * This is where behaviours are defined for Pitchers.
  */
-public class PitcherTooUtil {
+public class PitcherUtil {
    /*?
    * Type:Block
    * Range:26
@@ -15,7 +15,7 @@ public class PitcherTooUtil {
    * but no _behaviours_, we implement behaviours for the `Pitcher` in separate
    * functions that must take the `Pitcher` as a parameter.
    */
-	public static double ERA(PitcherToo p) {
+	public static double ERA(Pitcher p) {
       /*?
        * Type:Keyword
        * Anchor:p.inningsPitched 
