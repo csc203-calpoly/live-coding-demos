@@ -12,6 +12,7 @@ public class Game {
       /*?
        * Type:Keyword
        * Anchor:Scanner in = new Scanner(System.in);
+       * Sequence:1
        * ---
        * The `Scanner` class is used to get string input from various
        * sources.
@@ -22,6 +23,7 @@ public class Game {
       /*?
        * Type:Keyword
        * Anchor:name
+       * Sequence:2
        * ---
        * A local variable to temporarily hold each player's name (we will ask for them
        * one-by-one). Each name will be used to construct a new `Player`
@@ -33,6 +35,7 @@ public class Game {
        * Type:Block
        * Range:15
        * Title: Constructing the players
+       * Sequence:3
        * ---
        * We will construct two `Player` objects, one for each player, using
        * the names that are provided.
@@ -41,6 +44,7 @@ public class Game {
       /*?
        * Type:Keyword
        * Anchor:in.next()
+       * Sequence:4
        * ---
        * The Scanner's `next` instance method waits for the user to type some text
        * and then hit "Enter". It returns whatever the user typed.
@@ -54,8 +58,9 @@ public class Game {
 
       /*?
        * Type:Block
-       * Range:3
+       * Range:13
        * Title: Constructing the Pile of sticks
+       * Sequence:5
        * ---
        * We ask the user how many sticks they want to use in the game, and then construct a new `Pile` object with that many sticks.
        */
@@ -63,6 +68,7 @@ public class Game {
       /*?
        * Type:Keyword
        * Anchor:in.nextInt()
+       * Sequence:6
        * ---
        * The Scanner's `nextInt` instance method waits for the user to type some text
        * and then hit "Enter". It parses the text into an integer, and returns an int.
@@ -78,6 +84,7 @@ public class Game {
        * Type:Block
        * Range:24
        * Title: Playing the game
+       * Sequence:7
        * ---
        * We will play the game until the pile is empty.
        * 

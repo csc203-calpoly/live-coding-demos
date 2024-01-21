@@ -4,6 +4,7 @@ import java.util.Map;
 /*?
 * Type:Keyword
 * Anchor:public class CompareCohorts
+* Sequence:1
 * ---
 * We use this class as our "driver", i.e., it contains the entry point for our overall program.
 * This class is responsible for creating the objects that we will use to store our data.
@@ -15,6 +16,7 @@ public class CompareCohorts {
    * Type:Keyword
    * Anchor:public static void main(String[] args)
    * ID:main-method
+   * Sequence:2
    * ---
    * The main method is the entry point for our program.  It is the method that is called when we run the `CompareCohorts` class.
    * It is important for all parts of this method signature to be present, otherwise it will not be treated as the entry point.
@@ -26,6 +28,7 @@ public class CompareCohorts {
    * Type:Internal
    * Parent:main-method
    * Anchor:method signature
+   * Sequence:3
    * ---
    * The _signature_ of a method is composed of its **name**, **parameter list**, **return type**, and any modifiers like `public` and `static`. The first two components (name and parameter list)together will uniquely identify a method within a class. I.e., there can never exist multiple methods in one class with the same name and parameter types.
    */
@@ -34,6 +37,7 @@ public class CompareCohorts {
       * Type:Block
       * Range:4
       * Title:Creating objects
+      * Sequence: 4
       * ---
       * Here, we use the constructor from the `CsCohort` class to create four
       * objects.  Each object represents a cohort of students that entered the CS program.
@@ -42,8 +46,9 @@ public class CompareCohorts {
       * 
       * Type:Keyword
       * Anchor: new
+      * Sequence: 5
       * ---
-      * The `new` keyword is used in Java to create to new objects.
+      * The `new` keyword is used in Java to create new objects.
       */
       CsCohort year1 = new CsCohort(2012, 132, .932);
       CsCohort year2 = new CsCohort(2013, 172, .924);
@@ -54,6 +59,7 @@ public class CompareCohorts {
        * Type:Block
        * Range:8
        * Title:Accessing data
+       * Sequence: 6
        * ---
        * We can access data stored within each object by calling its instance methods that expose that data.
        * 
@@ -72,6 +78,7 @@ public class CompareCohorts {
        * Type:Block
        * Range:1
        * Title:Mutating data
+       * Sequence: 7
        * ---
        * We can use the setter method to change the value of the `year1` object's `retainedPercent` field.
        */
@@ -81,10 +88,11 @@ public class CompareCohorts {
        * Type:Block
        * Range: 1
        * Title: HashMap
+       * Sequence: 8
        * ---
-       * We declare and initialise a HashMap below.
+       * We declare and initialise a HashMap here.
        * Notice that the left-hand side of the declaration
-       * uses the `Map` type, while the right-hand side uses the `HashMap` type. We will talk about this in week 3.
+       * uses the `Map` type, while the right-hand side uses the `HashMap` type. We will talk about this when we talk about [interfaces](../07-interfaces/).
        */
       Map<String, CsCohort> theCohorts = new HashMap<>();
 
@@ -92,6 +100,7 @@ public class CompareCohorts {
        * Type:Block
        * Range:4
        * Title:Adding objects to the map
+       * Sequence: 9
        * ---
        * We use the `put` method to add data to the map.
        * The first argument is the _key_, and the second argument is the _value_.
@@ -107,6 +116,7 @@ public class CompareCohorts {
        * Type:Block
        * Range:5
        * Title:Iterating over the map
+       * Sequence: 10
        * ---
        * We use the `entrySet` method to get a set of all the key-value pairs
        * in the map. We can then iterate over the set using a for-each loop.
@@ -115,6 +125,7 @@ public class CompareCohorts {
        *  
        * Type:Keyword
        * Anchor:Map.Entry<String, CsCohort>
+       * Sequence:11
        * ---
        * This is the _data type_ of each element in the entry set. It looks a little
        * wonky, so here's what each part is saying. The `Map.Entry` part says that
@@ -133,6 +144,7 @@ public class CompareCohorts {
        * Type:Block
        * Range:6
        * Title:Iterating over the map
+       * Sequence:12
        * ---
        * We can also iterate over the map using the `keySet` method.
        * This method returns a set of all the keys in the map.

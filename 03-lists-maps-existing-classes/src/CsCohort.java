@@ -2,6 +2,7 @@
  * Type: Keyword
  * Anchor: public class CsCohort
  * ID: class-declaration 
+ * Sequence:0
  * ---
  * This is the *declaration* of a public class called `CsCohort`.
  * 
@@ -10,6 +11,7 @@
  * Type: Internal
  * Parent: class-declaration
  * Anchor: public
+ * Sequence: 1
  * ---
  * `public` indicates that this class is visible to and can be used by other classes.
  */
@@ -19,7 +21,8 @@ public class CsCohort {
    * Type: Block
    * Title: Instance variables
    * ID: instance-vars
-   * Range: 9
+   * Range: 11
+   * Sequence:2
    * ---
    * These are the _instance variables_ of this class.
    * Each `CsCohort` object will have its own `year`, `enrolled`, and
@@ -29,6 +32,7 @@ public class CsCohort {
    /*?
     * Type: Keyword
     * Anchor: final 
+    * Sequence: 3
     * ---
     * `final` indicates that this variable's value cannot be changed after it is initialized.
     */
@@ -37,8 +41,9 @@ public class CsCohort {
 
    /*?
     * Type: Block
-    * Range: 16
+    * Range: 17
     * Title: Constructor
+    * Sequence: 4
     * ---
     * This is the `constructor` for the `CsCohort` class.
     * The constructor's job is to create a new `CsCohort` object.
@@ -48,6 +53,7 @@ public class CsCohort {
       /*?
       * Type:Keyword
       * Anchor:this
+      * Sequence: 5
       * ---
       * `this` is the keyword used for the object to refer to itself.
       * So, in this example, `this.year` refers to this particular `CsCohort` object's `year` instance variable.
@@ -62,8 +68,9 @@ public class CsCohort {
 
    /*?
    * Type:Block
-   * Range:67
+   * Range:71
    * Title: Instance methods
+   * Sequence:6
    * ---
    * These are the _behaviours_ that each `CsCohort` can perform, using
    * its instance variables. We refer to these behaviours as _instance methods_.
@@ -73,6 +80,7 @@ public class CsCohort {
    * Type:Block
    * Range:3
    * Title:Getter method
+   * Sequence:7
    * ---
    * This is a _getter_ method or _accessor_ method.
    * It returns the value of the `year` instance variable.
@@ -81,6 +89,7 @@ public class CsCohort {
    * 
    * Type:Keyword
    * Anchor:public
+   * Sequence:8
    * ---
    * `public` indicates that the method is visible to other classes. That is, when other classes have a `CsCohort` object, they can call this method on that object.
    * 
@@ -88,6 +97,7 @@ public class CsCohort {
    *
    * Type:Keyword
    * Anchor:int
+   * Sequence:9
    * ---
    * `int` is the return type of this method. It indicates that this method returns an integer value. The return type here is dictated by the data type of the `year` instance variable.
    */
@@ -99,6 +109,7 @@ public class CsCohort {
    * Type:Block
    * Range:3
    * Title:Setter method
+   * Sequence:10
    * ---
    * This is a _setter_ method or _mutator_ method.
    * It sets the value of the `year` instance variable.
@@ -107,6 +118,7 @@ public class CsCohort {
    * 
    * Type:Keyword
    * Anchor: int year
+   * Sequence:12
    * ---
    * Unlike the getter method above, this setter method takes in a parameter, which is the new value to be given to the `year` instance variable. The type of that parameter needs to match the type of the instance variable.
    * 
@@ -114,6 +126,7 @@ public class CsCohort {
    *
    * Type:Keyword
    * Anchor:void
+   * Sequence:11
    * ---
    * Since this method's job is only to change the value of the `year` instance variable, it does not return anything. Hence its return type is declared as `void`. 
    */
@@ -125,6 +138,7 @@ public class CsCohort {
    * Type:Block
    * Range:3
    * Title: public int getEnrolled
+   * Sequence: 13
    * ---
    * We only provide a getter method for the `enrolled` instance variable, but not a setter method.
    * This means that no other class that modify this `CsCohort`'s `enrolled` value, but they can still read it.
@@ -141,6 +155,7 @@ public class CsCohort {
    * Type:Block
    * Range:8
    * Title: setRetainedPercent(double newPercent)
+   * Sequence: 14
    * ---
    * This is a setter method for the `retainedPercent` instance variable.
    * We use this setter method to perform some validation on the `newPercent` parameter, before we assign its value to the `retainedPercent` instance variable.
