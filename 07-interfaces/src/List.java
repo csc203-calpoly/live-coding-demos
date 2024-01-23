@@ -30,15 +30,16 @@ public interface List {
    * In addition to the method signature, it's important for interface abstract methods to include Javadoc comments describing the method's purpose. These examples are pared down for simplicity—see the actual Java List interface for the type of detail that might be included in a Javadoc comment.
    */
   /**
-   * Appends the specified element to the end of the list.
-   * @param e element to be appended to this list.
+   * Returns the element at the specified index.
+   * @param index the position from which to return an element.
    */
   /*?
    * Type:Keyword
-   * Anchor:E e
+   * Anchor:E
    * ID: E
+   * Sequence:4
    * ---
-   * The parameter type `E` is a placeholder. This list might be used as a list of ints or Strings or anything else.
+   * This return type `E` is a placeholder. This list might be used as a list of ints or Strings or anything else.
    * 
    * +++
    * 
@@ -47,6 +48,12 @@ public interface List {
    * Anchor:placeholder
    * ---
    * We will talk more about _Java generics_ later this quarter.
+   */
+  E get(int index);
+
+  /**
+   * Appends the specified element to the end of the list.
+   * @param e element to be appended to this list.
    */
   void add(E e);
 
@@ -61,6 +68,7 @@ public interface List {
   /*?
    * Type:Keyword
    * Anchor:add
+   * Sequence:5
    * ---
    * This is an overload of the `add` method. See the lesson on method dispatch for a review of method overloading.
    */

@@ -1,28 +1,20 @@
 import java.util.Random;
 
-public class RandomPlayer implements Player
-{
+public class RandomPlayer implements Player {
    private String name;
-   private int sticksTaken;
-   private Random rand;
+   private Random random;
     
    public RandomPlayer(String name)
    {
       this.name = name;
-      sticksTaken = 0;
-      rand = new Random();
+      this.random = new Random();
    }
 
-   public String name() {return name;}
-   public int sticksTaken() {return sticksTaken;}
+   public String getName() {
+      return this.name;
+   }
     
-   public void takeTurn(Pile pile) 
-   {
-
-    
-    
-    
-    
-    
+   public void takeTurn(Pile pile) {
+      this.random.nextInt(1, pile.sticks() + 1);
    }
 }

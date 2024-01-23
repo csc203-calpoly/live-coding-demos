@@ -1,6 +1,5 @@
 public interface Player
 {
-   public String name();
-   public int sticksTaken();
+   public String getName();
    public void takeTurn(Pile pile);
 }

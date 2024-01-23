@@ -5,78 +5,120 @@ import java.util.*;
  * @author Julie Workman
  * @version 2.0
  */
-public class Game
-{
-   public static void main(String[] args)
-   {
-      Player p1, p2;
-      Pile pile;
-      int numSticks;
+public class Game {
+   public static void main(String[] args) {
       Scanner in = new Scanner(System.in);
-        
+      
       System.out.println("Create Player 1...");
-      p1 = createPlayer(in);
+      /*?
+       * Type:Keyword
+       * anchor: createPlayer
+       * ---
+       * The implementation of this method is further down in this file.
+       * 
+       * Instead of directly using a constructor, we use the `createPlayer` method to create
+       * a `Player`. The method takes in the `Scanner` object a parameter, using it to ask the
+       * user what kind of `Player` to create. The method then returns the created `Player`.
+       * 
+       * This type of method is called a "factory method".
+       */
+      Player p1 = createPlayer(in);
         
       System.out.println("\nCreate Player 2...");
-      p2 = createPlayer(in);
+      Player p2 = createPlayer(in);
 
       System.out.print("\nHow many sticks? ");
-      numSticks = in.nextInt();
-      pile = new Pile(numSticks);
+      int numSticks = in.nextInt();
+      Pile pile = new Pile(numSticks);
         
       boolean done=false;
-      while(!done)
-      {
+      /*?
+       * Type:Block
+       * Range:19
+       * Title: Game play
+       * ---
+       * Like before, this loop runs the game logic. Notice that the game never knows what type
+       * of `Player` it is playing with — it doesn't care, as long as the `p1` and `p2` can
+       * take turns.
+       */
+      while(!done) {
+         /*?
+          * Type:Keyword
+          * Anchor: play
+          * ---
+          * The `play` method runs a turn of the game. It takes in a `Player` (the current player)
+          * and the `Pile` as inputs, and returns a `boolean` indicating whether the game is over.
+          */
          done = play(p1, pile);
-         if (done)
-         {
+         if (done) {
             System.out.println("\n" + p2.name()+ " is the winner!!!");
-         }
-         else
-         {
+         } else {
             done = play(p2, pile);
-            if (done)
+            if (done) {
                System.out.println("\n" + p1.name()+ " is the winner!!!");
+            }
          }    
       }
    }
-   public static Player createPlayer(Scanner in)
-   {
-      Player p;
-      String name;
-      int type;
-      
+
+   /*?
+    * Type: Block
+    * Range:23
+    * Title: createPlayer
+    * ---
+    * This method is where the "wall" between the game and `Player` is pierced. The method
+    * does the work of deciding exactly _what_ kind of `Player` to create.
+    * 
+    * Notice that the method returns a `Player`, not a `GreedyPlayer`, `TimidPlayer`, or `RandomPlayer`.
+    * The _**static type**_ of the returned object is `Player`, but the _**dynamic type**_  
+    * might be `GreedyPlayer`, `TimidPlayer`, or `RandomPlayer`.
+    */
+   /**
+    * Creates a player based on user input.
+    * @param in the Scanner to use for input
+    * @return a GreedyPlayer, TimidPlayer, or RandomPlayer
+    */
+   public static Player createPlayer(Scanner in) {
       System.out.print("Player's name? ");
-      name = in.next();
+      String name = in.next();
       
       System.out.print("Player type (0 - Greedy, 1 - Timid, 2 - Random)? ");
-      type = in.nextInt();
+      int type = in.nextInt();
       
-      if (type == 0)
-      {
+      if (type == 0) {
          in.nextLine(); // remove \n from input stream
-         System.out.print("Taunt? ");
-         String taunt = in.nextLine();  // gets whole line      
-         p = new GreedyPlayer(name, taunt);
+         System.out.print("What's your jeer? ");
+         String jeer = in.nextLine();
+         return new GreedyPlayer(name, jeer);
+      } else if (type == 1) {
+         return new TimidPlayer(name);  
+      } else {
+         return new RandomPlayer(name);
       }
-      else if (type == 1)
-         p = new TimidPlayer(name);  
-      else 
-         p = new RandomPlayer(name);
-     
-      return p;   
    }
-   
-   public static boolean play(Player p, Pile pile)
-   {
+
+   /*?
+    * Type:Block
+    * Range:17
+    * Title: Take a turn 
+    * ---
+    * This game play remains the same no matter what kind of `Player` is playing.
+    */
+   /**
+    * Plays a turn of Nim.
+    * @param p the player whose turn it is
+    * @param pile the pile of sticks
+    * @return true if the game is over, false otherwise
+    */
+   public static boolean play(Player p, Pile pile) {
       p.takeTurn(pile);
       System.out.println("\n" + p.name() + " takes " + p.sticksTaken() + " sticks.\n" +
        "There are " + pile.sticks() + " left in the pile.");
 
-      // GreedyPlayer has some specific behaviour here
-
-      if (pile.sticks() <= 0)
+      if (pile.sticks() <= 0) {
          return true;
+      }
+
       return false;      
    }
 }
