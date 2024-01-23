@@ -1,33 +1,24 @@
-public class GreedyPlayer implements Player
-{
+public class GreedyPlayer implements Player {
    private String name;
-   private int sticksTaken;
-   private String taunt;
-    
-   /**
-    * Constructor for objects of class GreedyPlayer
-    */
-   public GreedyPlayer(String name, String taunt)
-   {
-      this.name = name;
-      this.taunt = taunt;
-      sticksTaken = 0;
+   private String jeer; // This player talks smack
+   
+   public GreedyPlayer(String name, String jeer) {
+     this.name = name;
+     this.jeer = jeer;
    }
-
-   public String name() {return name;}
-   public String taunt() {return taunt;}
-   public int sticksTaken() {return sticksTaken;}
-
-   public void takeTurn(Pile pile) 
-   {
-
-    
-    
-    
-    
-    
-    
-    
-    
+ 
+   public String jeer() {
+     return this.jeer;
    }
-}
+ 
+   @Override
+   public String getName() {
+     return this.name;
+   }
+ 
+   @Override  
+   public int takeTurn(Pile pile) {
+      // TODO: implement this method
+      return 0;
+   }
+ }

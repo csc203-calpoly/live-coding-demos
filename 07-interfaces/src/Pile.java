@@ -19,7 +19,7 @@ public class Pile
   /**
    * @return The number of sticks remaining in this Pile.
    */
-   public int sticks() {return sticksLeft;}
+   public int getSticks() {return sticksLeft;}
 
    /**
     * Reduce the number of sticks by the specified amount.

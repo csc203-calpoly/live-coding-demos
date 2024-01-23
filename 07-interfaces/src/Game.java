@@ -12,7 +12,8 @@ public class Game {
       System.out.println("Create Player 1...");
       /*?
        * Type:Keyword
-       * anchor: createPlayer
+       * Anchor: createPlayer
+       * Sequence: 1
        * ---
        * The implementation of this method is further down in this file.
        * 
@@ -36,6 +37,7 @@ public class Game {
        * Type:Block
        * Range:19
        * Title: Game play
+       * Sequence: 2
        * ---
        * Like before, this loop runs the game logic. Notice that the game never knows what type
        * of `Player` it is playing with — it doesn't care, as long as the `p1` and `p2` can
@@ -45,17 +47,18 @@ public class Game {
          /*?
           * Type:Keyword
           * Anchor: play
+          * Sequence: 3
           * ---
           * The `play` method runs a turn of the game. It takes in a `Player` (the current player)
           * and the `Pile` as inputs, and returns a `boolean` indicating whether the game is over.
           */
          done = play(p1, pile);
          if (done) {
-            System.out.println("\n" + p2.name()+ " is the winner!!!");
+            System.out.println("\n" + p2.getName()+ " is the winner!!!");
          } else {
             done = play(p2, pile);
             if (done) {
-               System.out.println("\n" + p1.name()+ " is the winner!!!");
+               System.out.println("\n" + p1.getName() + " is the winner!!!");
             }
          }    
       }
@@ -65,6 +68,7 @@ public class Game {
     * Type: Block
     * Range:23
     * Title: createPlayer
+    * Sequence: 4
     * ---
     * This method is where the "wall" between the game and `Player` is pierced. The method
     * does the work of deciding exactly _what_ kind of `Player` to create.
@@ -101,6 +105,7 @@ public class Game {
     * Type:Block
     * Range:17
     * Title: Take a turn 
+    * Sequence: 5
     * ---
     * This game play remains the same no matter what kind of `Player` is playing.
     */
@@ -111,11 +116,11 @@ public class Game {
     * @return true if the game is over, false otherwise
     */
    public static boolean play(Player p, Pile pile) {
-      p.takeTurn(pile);
-      System.out.println("\n" + p.name() + " takes " + p.sticksTaken() + " sticks.\n" +
-       "There are " + pile.sticks() + " left in the pile.");
+      int sticksTaken = p.takeTurn(pile);
+      System.out.println("\n" + p.getName() + " takes " + sticksTaken + " sticks.\n" +
+       "There are " + pile.getSticks() + " left in the pile.");
 
-      if (pile.sticks() <= 0) {
+      if (pile.getSticks() <= 0) {
          return true;
       }
 
