@@ -3,7 +3,7 @@ package part1;
 import java.awt.Color;
 import java.awt.Point;
 
-public class Circle implements Shape, OtherInterface
+public class Circle implements Shape
 {
    private Point center;
    private double radius;
