@@ -3,22 +3,21 @@ import java.util.Scanner;
 public class HumanPlayer implements Player
 {
    private String name;
-   private int sticksTaken;
+   private Scanner scanner;
     
-   public HumanPlayer(String name)
-   {
+   public HumanPlayer(String name, Scanner scanner) {
       this.name = name;
+      this.scanner = scanner;
    }
 
-   public String name() {return name;}
-   public int sticksTaken() {return sticksTaken;}
+   public String getName() {return name;}
     
-   public void takeTurn(Pile pile) 
+   public int takeTurn(Pile pile) 
    {
-      Scanner in = new Scanner(System.in);
       System.out.print(name + ", number of sticks to take: ");
-      String numSticks = in.next();
-      sticksTaken = Math.min(Integer.parseInt(numSticks), pile.sticks());
-      pile.remove(sticksTaken);
+      String numSticks = this.scanner.next();
+      int toRemove = Math.min(Integer.parseInt(numSticks), pile.getSticks());
+      pile.removeSticks(toRemove);
+      return toRemove;
    }
 }

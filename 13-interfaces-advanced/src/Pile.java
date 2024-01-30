@@ -1,35 +1,27 @@
 /**
- * A pile of sticks for playing simple nim.
+ * A pile of sticks for playing Simple Nim.
  */
-public class Pile
-{
-   private int sticksLeft;
-
-   /**
-    * Create a new Pile, with the specified number of sticks.
-    * sticks must be non-negative.
-    *
-    * @param sticks the starting number of sticks for the pile
-    */
-   public Pile (int sticks)
-   {
-      sticksLeft = sticks;
+public class Pile {
+   private int sticks;
+ 
+   public Pile(int sticks) {
+     this.sticks = sticks;
    }
-
-  /**
-   * @return The number of sticks remaining in this Pile.
-   */
-   public int sticks() {return sticksLeft;}
-
-   /**
-    * Reduce the number of sticks by the specified amount.
-    * numSticks must be non-negative and not greater than
-    * this.sticks().
-    *
-    * @param numSticks the number of sticks to remove
-    */
-   public void remove (int numSticks)
-   {
-      sticksLeft = sticksLeft - numSticks;
+ 
+   public int getSticks() {
+     return sticks;
    }
-}
+ 
+   public void removeSticks(int toRemove) {
+     if (toRemove < 1 || toRemove > 3) {
+       // We will learn more about exceptions later this quarter.
+       // This basically tells the program to crash.
+       throw new IllegalArgumentException("Must remove 1-3 sticks");
+     } else if (toRemove > sticks) {
+       throw new IllegalArgumentException("Not enough sticks to remove");
+     } else {
+       this.sticks = this.sticks - toRemove;
+     }
+   }
+ 
+ }

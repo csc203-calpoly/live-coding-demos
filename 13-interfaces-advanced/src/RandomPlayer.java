@@ -1,27 +1,28 @@
 import java.util.Random;
 
-public class RandomPlayer implements Player
-{
-    private String name;
-    private int sticksTaken;
-    private Random rand;
-    
-    public RandomPlayer(String name)
-    {
-          this.name = name;
-          sticksTaken = 0;
-          rand = new Random();
-    }
+public class RandomPlayer implements Player {
+  private String name;
+  private Random random;
+   
+  public RandomPlayer(String name) {
+    this.name = name;
+    this.random = new Random();
+  }
 
-    public String name() {return name;}
-    public int sticksTaken() {return sticksTaken;}
-    
-    public void takeTurn(Pile pile) 
-    {
-       do
-       {
-          sticksTaken = rand.nextInt(3) + 1;
-       } while (sticksTaken > pile.sticks());
-       pile.remove(sticksTaken);
-    }
+  @Override
+  public String getName() {
+    return this.name;
+  }
+
+  @Override 
+  public int takeTurn(Pile pile) {
+    int toRemove = Integer.MAX_VALUE;
+
+    do {
+      toRemove = this.random.nextInt(1, pile.getSticks() + 1);
+    } while(toRemove > pile.getSticks());
+
+    pile.removeSticks(toRemove);
+    return toRemove;
+  }
 }

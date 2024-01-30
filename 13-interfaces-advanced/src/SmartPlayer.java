@@ -1,38 +1,33 @@
-public class SmartPlayer implements Player, Socializer
-{
+public class SmartPlayer implements SocialPlayer {
    private String name;
-   private int sticksTaken;
 
    /**
    * Constructor for objects of class SmartPlayer
    */
-   public SmartPlayer(String name)
-   {
+   public SmartPlayer(String name) {
       this.name = name;
-      sticksTaken = 0;
    }
 
-   public String name() {return name;}
-   public int sticksTaken() {return sticksTaken;}
+   public String getName() {
+      return name;
+   }
 
-   public void takeTurn(Pile pile) 
-   {
-      sticksTaken = (pile.sticks()-1)%4;
+   public int takeTurn(Pile pile) {
+      int toRemove = (pile.getSticks()-1)%4;
       
-      if (sticksTaken == 0)
-         sticksTaken = 1;
+      if (toRemove == 0)
+         toRemove = 1;
 
-      pile.remove(sticksTaken);   
+      pile.removeSticks(toRemove);   
+      return toRemove;
    }
    
-   public void makeComment()
-   {
-      System.out.println("Yeah, Ima gonna win.");
-   }
-    
-   public void chitChat(String talkingTo)
-   {
-      System.out.println("Hey, " + talkingTo + ", not a good move");
+   public void makeComment() {
+      System.out.println("Yeah, I'm gonna win.");
    }
 
+   @Override
+   public void makeComment(String message) {
+      System.out.println(message);
+   }
 }

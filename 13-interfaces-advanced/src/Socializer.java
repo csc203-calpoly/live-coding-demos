@@ -1,8 +1,5 @@
-interface Socializer 
-{
-   // interface can have data - AUTOMATICALLY public and static
-   int someMagicNumber = 42;
-   
-	void makeComment();
-	void chitChat(String talkingTo);
-}
+interface Socializer {
+   void makeComment(); // prints some pre-defined comment
+   void makeComment(String message); // prints the specified message
+ }
+ 

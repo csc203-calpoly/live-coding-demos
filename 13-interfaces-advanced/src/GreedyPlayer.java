@@ -1,40 +1,36 @@
-public class GreedyPlayer implements SocialPlayer
-{
+public class GreedyPlayer implements SocialPlayer {
     private String name;
-    private int sticksTaken;
-    private String taunt;
+    private String jeer; // This player talks smack
     
-    /**
-     * Constructor for objects of class TimidPlayer
-     */
-    public GreedyPlayer(String name, String taunt)
-    {
-          this.name = name;
-          this.taunt = taunt;
-          sticksTaken = 0;
+    public GreedyPlayer(String name, String jeer) {
+      this.name = name;
+      this.jeer = jeer;
+    }
+  
+    @Override
+    public String getName() {
+      return this.name;
+    }
+  
+    @Override  
+    public int takeTurn(Pile pile) {
+      int toRemove = 0;
+      if (pile.getSticks() >= 3) {
+        toRemove = 3;
+      } else {
+        toRemove = pile.getSticks();
+      }
+      return toRemove;
     }
 
-    public String name() {return name;}
-    public int sticksTaken() {return sticksTaken;}
-
-    public void takeTurn(Pile pile)
-    {
-        if (pile.sticks() > 3)
-           sticksTaken = 3;
-        else
-            sticksTaken = pile.sticks();
-
-        pile.remove(sticksTaken);
+    @Override
+    public void makeComment() {
+      System.out.println(this.jeer);
     }
 
-    public void makeComment()
-    {
-       System.out.println(name + ": Haha! " + taunt);
+    @Override
+    public void makeComment(String message) {
+      System.out.println(message);
     }
-    
-    public void chitChat(String talkingTo)
-    {
-        System.out.println(name + ": Hey " + talkingTo + ", you're gonna lose.");
-    }
-
-}
+  }
+  
