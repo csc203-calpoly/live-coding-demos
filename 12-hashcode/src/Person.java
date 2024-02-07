@@ -15,13 +15,12 @@ public class Person
    * @param age The Person's age
    * @throws IllegalArgumentException if age < 0 or name is empty
    */
-  public Person(String name, int age)
-  {
+  public Person(String name, int age) {
     if (age < 0) {
       throw new IllegalArgumentException("Age cannot be a negative number.");
     }
 
-    if (name.length() == 0) {
+    if (name.isEmpty()) {
       throw new IllegalArgumentException("name must be non-empty.");
     }
 
@@ -51,7 +50,7 @@ public class Person
 
   @Override
   public int hashCode() {
-    return Objects.hash(age);
+    return Objects.hash(this.name, this.age);
   }
 
 // @Override
