@@ -4,79 +4,38 @@ public class CompTester
 {
     public static void main(String[] args)
     {
-        ArrayList<Student> studentList = new ArrayList<>();
-        Student[] studentArray = new Student[5];
+        ArrayList<Album> albums = new ArrayList<>();
+        Album[] albumArray = new Album[4];
         
-        studentList.add(new Student("Bob Smidt", 26, 2.67));
-        studentList.add(new Student("Julie Workman", 21, 3.84));
-        studentList.add(new Student("Jane Johnson", 18, 3.59));
-        studentList.add(new Student("Paul Hatalsky", 22, 3.21));
-        studentList.add(new Student("Zoë Wood", 21, 3.62));
+        albums.add(new Album("Rubber Soul", "The Beatles", 1965, 19.99));
+        albums.add(new Album("1989", "Taylor Swift", 2015, 19.99));
+        albums.add(new Album("1989 (Taylor's Version)", "Taylor Swift", 2023, 19.99));
+        albums.add(new Album("Leaving Eden", "The Carolina Chocolate Drops", 2012, 19.99));
 
-        studentArray[0] = new Student("Bob Smidt", 26, 2.67);
-        studentArray[1] = new Student("Julie Workman", 21, 3.84);
-        studentArray[2] = new Student("Jane Johnson", 18, 3.59);
-        studentArray[3] = new Student("Paul Hatalsky", 22, 3.21);
-        studentArray[4] = new Student("Zoë Wood", 21, 3.62);
+        albumArray[0] = new Album("Rubber Soul", "The Beatles", 1965, 19.99);
+        albumArray[1] = new Album("1989", "Taylor Swift", 2015, 19.99);
+        albumArray[2] = new Album("1989 (Taylor's Version)", "Taylor Swift", 2023, 19.99);
+        albumArray[3] = new Album("Leaving Eden", "The Carolina Chocolate Drops", 2012, 19.99);
 
-        System.out.println("Student List:");
-        for (Student s : studentList)
+        System.out.println("Album List:");
+        for (Album s : albums)
                     System.out.println("   " + s);
 
-        System.out.println("Student Array:");
-        for (Student s : studentArray)
+        System.out.println("Album Array:");
+        for (Album s : albumArray)
                     System.out.println("   " + s);
 
-        System.out.println("\n---- Sorting by Last Name -----\n");
+        System.out.println("\n---- Sorting by Title -----\n");
         // Sort in place -- Don't return a sorted list
-        Collections.sort(studentList);
-        Arrays.sort(studentArray); // Doesn't check if the list contains Comparable items
+        Collections.sort(albums);
+        Arrays.sort(albumArray); // Doesn't check if the list contains Comparable items
 
-        System.out.println("Student List:");
-        for (Student s : studentList)
+        System.out.println("Album List:");
+        for (Album s : albums)
                     System.out.println("   " + s);
 
         System.out.println("Student Array:");
-        for (Student s : studentArray)
+        for (Album s : albumArray)
                     System.out.println("   " + s);
-
-/*
-       System.out.println("\n---- Sorting by GPA -----\n");
-       Collections.sort(studentList, new StudentGpaComparator());
-
-       System.out.println("Student List:");
-       for (Student s : studentList)
-                 System.out.println("   " + s);
-
-       System.out.println("\n---- Sorting by Age -----\n");
-       Collections.sort(studentList, new StudentAgeComparator());
-
-       System.out.println("Student List:");
-       for (Student s : studentList)
-                 System.out.println("   " + s);
-
-       System.out.println("\n---- Sorting by Last Name -----\n");
-       Collections.sort(studentList);
-       Arrays.sort(studentArray);
-
-       System.out.println("Student List:");
-       for (Student s : studentList)
-                 System.out.println("   " + s);
-
-       System.out.println("\n---- Sorting by Age and Gpa -----\n");
-       Collections.sort(studentList, 
-         new StudentAgeComparator().thenComparing(new StudentGpaComparator()));
-
-       System.out.println("Student List:");
-       for (Student s : studentList)
-                 System.out.println("   " + s);
-
-       System.out.println("\n---- Sorting by Gpa Reversed -----\n");
-       Collections.sort(studentList, 
-               new StudentGpaComparator().reversed());
-       System.out.println("Student List:");
-       for (Student s : studentList)
-                 System.out.println("   " + s);
-*/
     }
 }
