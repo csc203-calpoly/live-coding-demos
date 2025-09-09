@@ -1,39 +1,27 @@
 # CSC 203 Project-based Object-oriented Programming and Design
 
-These are coursenotes and "start states" for the Java code I use while teaching.
-I teach by live-coding, so examples have intentional gaps that I fill in during lectures.
+These are code examples I use in class while live-coding.
 
-For most lectures, the code example is pretty much the only resource for the time being.
-I am writing more detailed coursenotes as I get time.
+They are meant to pair with the notes at [https://ayaankazerouni.org/courses/csc203/coursenotes](https://ayaankazerouni.org/courses/csc203/coursenotes).
 
-## Typical schedule
-
-Ignore the numbers in the subdirectory names. Those represent the order the first few times I taught the class, but things have moved around since then.
-
-I usually teach this on MWF for 10 weeks. Some topics invariably take more days than I plan, some days are devoted to Q&A for projects, etc. So there is some wiggle room in the schedule below.
-
-| Session | Topic | Content |
-| -- | -- | --|
-| 1 | Course intro<br>Intro to java | [Coursenotes](01-intro-to-java/) |
-| 2 | Arithmetic and Type casting<br>Also introduce JUnit testing | [Coursenotes](02-arithmetic-and-testing/) |
-| 3 | Lists, maps, existing classes in Java | [Lecture code example](03-lists-maps-existing-classes/) |
-| 4 | Classes and objects, OOP and procedural programming | [Lecture code example](04-classes-and-objects/) |
-| 5 | Boxed types and method overloading | [Lecture code example](05-autoboxing-overloading/) |
-| 6 | Interacting classes | [Lecture code example](06-interacting-classes/) |
-| 7 | Interfaces, coupling | [Lecture code example](07-interfaces/) |
-| 8 | More on interfaces<br>Default methods | [Lecture code example](13-interfaces-advanced/)
-| 9 | Abstract classes | [Lecture code example](16-abstract-classes/) |
-| 10 | More on abstract classes | Same as above |
-| 11 | Inheritance | [Lecture code example](14-equality-inheritance/) |
-| 12 | More on inheritance<br>Equality and hashcode | [Lecture code example](15-inheritance-2/)
-| 13 | Comparables and comparators | [Lecture code example](19-comparables-comparators/)|
-| 14 | Comparators and lambda | [Lecture code example](20-comparators-lambda/)|
-| 15 | More on lambdas | Same as above |
-| 16 | Streams | [Lecture code example](24-streams-and-strategies/) |
-| 17 | Binary trees | [Lecture code example](22-binary-trees/) |
-| 18 | Depth-first search | Same as above |
-| 19 | Breadth-first search | Same as above |
-| 20 | A-star search | | 
-| 21 | Unit testing A-star search | [Lecture code example](26-a-star-testing)
-| 22 | Generics | [Binary tree example](22-binary-trees/) |
-| 23 | Exception handling | [Lecture code example](25-exceptions/)
+| Topic                              | Code for live-coding                                             | Lecture notes                                                                                   |
+| ---------------------------------- | ---------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| Intro to java                      | [01-intro-to-java](01-intro-to-java)                             | [Notes 🔗](https://ayaankazerouni.org/courses/csc203/coursenotes/01-intro-java/)                  |
+| Types and type casting; arithmetic | [02-arithmetic-and-testing](02-arithmetic-and-testing)           | [Notes 🔗](https://ayaankazerouni.org/courses/csc203/coursenotes/02-arithmetic-and-testing/)      |
+| Lists, maps, and existing classes  | [03-lists-maps-existing-classes](03-lists-maps-existing-classes) | [Notes 🔗](https://ayaankazerouni.org/courses/csc203/coursenotes/03-lists-maps-existing-classes/) |
+| Procedural and OOP                 | [04-procedural-and-oop](04-procedural-and-oop)                   | [Notes 🔗](https://ayaankazerouni.org/courses/csc203/coursenotes/04-oop-and-procedural/)          |
+| Method dispatch                    | [05-method-dispatch](05-method-dispatch)                         | [Notes 🔗](https://ayaankazerouni.org/courses/csc203/coursenotes/05-method-dispatch/)             |
+| Class design process               | [06-class-design-process](06-class-design-process)               | [Notes 🔗](https://ayaankazerouni.org/courses/csc203/coursenotes/06-class-design-process/)        |
+| Interfaces                         | [07-interfaces](07-interfaces)                                   | [Notes 🔗](https://ayaankazerouni.org/courses/csc203/coursenotes/07-interfaces/)                  |
+| Interfaces 2                       | [08-interfaces-2](08-interfaces-2)                               | [Notes 🔗](https://ayaankazerouni.org/courses/csc203/coursenotes/08-interfaces-part-2/)           |
+| Interfaces (advanced)              | [08-interfaces-advanced](08-interfaces-advanced)                 | [Notes 🔗](https://ayaankazerouni.org/courses/csc203/coursenotes/09-interfaces-part-3/)           |
+| Interfaces worksheet               | [09-interfaces-worksheet](09-interfaces-worksheet)               | See the worksheet in the OneDrive                                                               |
+| Abstract classes                   | [10-abstract-classes](10-abstract-classes)                       | [Notes 🔗](https://ayaankazerouni.org/courses/csc203/coursenotes/10-abstract-classes/)            |
+| Equality & inheritance             | [11-equality-inheritance](11-equality-inheritance)               | [Notes 🔗](https://ayaankazerouni.org/courses/csc203/coursenotes/11-inheritance-equality/)        |
+| Hashcode                           | [12-hashcode](12-hashcode)                                       | [Notes 🔗](https://ayaankazerouni.org/courses/csc203/coursenotes/12-hashcode/)                    |
+| Comparables & comparators          | [13-comparables-comparators](13-comparables-comparators)         | [Notes 🔗](https://ayaankazerouni.org/courses/csc203/coursenotes/13-comparable-comparator/)       |
+| Comparators & lambda               | [14-comparators-lambda](14-comparators-lambda)                   | [Notes 🔗](https://ayaankazerouni.org/courses/csc203/coursenotes/14-comparators/)                 |
+| Lambdas and functional interfaces  | [24-streams-and-strategies](24-streams-and-strategies)           | [Notes 🔗](https://ayaankazerouni.org/courses/csc203/coursenotes/15-lambdas/)                     |
+| Binary trees                       | [22-binary-trees](22-binary-trees)                               |                                                                                                 |
+| Exceptions                         | [25-exceptions](25-exceptions)                                   |                                                                                                 |
+| A* testing                         | [26-a-star-testing](26-a-star-testing)                           |                                                                                                 |
