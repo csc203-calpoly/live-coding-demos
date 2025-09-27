@@ -1,5 +1,8 @@
 .DS_Store
-*.jar
+# *.jar
+# For some reason can't add lib/ when ignoring *.jar
+# leaving this out for now.
+!lib
 *.class
 !processing.jar
 *.xml
