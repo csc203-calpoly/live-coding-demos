@@ -1,0 +1,8 @@
+Michael,5.2
+Phyllis,3.8
+Dwight,3.1
+Pam,2.5
+Jim,4.0
+Oscar,6.3
+Stanley,1.2
+
