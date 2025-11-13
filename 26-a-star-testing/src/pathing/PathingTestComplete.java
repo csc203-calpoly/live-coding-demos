@@ -11,7 +11,7 @@ public class PathingTestComplete {
     @Test
     public void testSingleStepNoObstacles() {
         // Grid for testing --> 2D array
-        GridValues[][] grid = {
+        boolean[][] grid = {
                 { true, true, true },
                 { true, true, true },
                 { true, true, true }
@@ -46,7 +46,7 @@ public class PathingTestComplete {
         // traverse the path and check each point is adjacent to its previous point
     }
 
-    private static boolean withinBounds(Point p, GridValues[][] grid) {
+    private static boolean withinBounds(Point p, boolean[][] grid) {
         return p.y >= 0 && p.y < grid.length &&
                 p.x >= 0 && p.x < grid[0].length;
     }
